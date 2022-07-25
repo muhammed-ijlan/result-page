@@ -46,26 +46,33 @@ export default function StundentForm() {
 
     return (
         <>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", margin: "100px", flexDirection: "column" }}>
-                <h3 style={{ marginBottom: "50px" }}>Check your Exam result</h3>
-                {!validation && <Form onSubmit={submitHandler}>
-                    <Form.Group className="mb-3" style={{ width: "20rem" }} controlId="formBasicEmail">
-                        <Form.Label>Register Number</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Register Number" ref={regRef} onChange={registerinputHandler} />
-                        {wrongRegNumber && <Form.Text style={{ color: "red" }}>Wrong Register Number</Form.Text>}
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", margin: "30px", flexDirection: "column" }}>
 
-                    </Form.Group>
+                {!validation &&
+                    <>
 
-                    <Form.Group className="mb-3" style={{ width: "20rem" }} controlId="formBasicPassword">
-                        <Form.Label>DOB</Form.Label>
-                        <Form.Control type="text" placeholder="dd/mm/yy" ref={dobRef} />
-                        {wrongDob && <Form.Text style={{ color: "red" }}>Wrong DOB</Form.Text>}
-                    </Form.Group>
+                        <h3 style={{ marginBottom: "50px" }}>Check your Exam result</h3>
+                        <Form onSubmit={submitHandler}>
+                            <Form.Group className="mb-3" style={{ width: "20rem" }} controlId="formBasicEmail">
+                                <Form.Label>Register Number</Form.Label>
+                                <Form.Control type="text" placeholder="Enter Register Number" ref={regRef} onChange={registerinputHandler} />
+                                {wrongRegNumber && <Form.Text style={{ color: "red" }}>Wrong Register Number</Form.Text>}
 
-                    <Button variant="primary" type="submit">
-                        Submit
-                    </Button>
-                </Form>}
+                            </Form.Group>
+
+                            <Form.Group className="mb-3" style={{ width: "20rem" }} controlId="formBasicPassword">
+                                <Form.Label>DOB</Form.Label>
+                                <Form.Control type="text" placeholder="dd/mm/yy" ref={dobRef} />
+                                {wrongDob && <Form.Text style={{ color: "red" }}>Wrong DOB</Form.Text>}
+                            </Form.Group>
+
+                            <Button variant="primary" type="submit">
+                                Submit
+                            </Button>
+                        </Form>
+
+                    </>
+                }
 
             </div>
             {validation &&
