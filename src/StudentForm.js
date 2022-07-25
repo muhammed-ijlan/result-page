@@ -10,6 +10,8 @@ export default function StundentForm() {
     const regRef = useRef(null);
     const dobRef = useRef(null);
     const [currentStudent, setCurrentStudent] = useState("")
+    const [wrongRegNumber, setWrongRegNumber] = useState(false)
+    const [wrongDob, setWrongDob] = useState(false)
 
     function registerinputHandler() {
 
@@ -32,10 +34,10 @@ export default function StundentForm() {
                     setCurrentStudent(student)
 
                 } else {
-                    console.log("DOb is wrong");
+                    setWrongDob(true)
                 }
             } else {
-                console.log("Register Number is wrong");
+                setWrongRegNumber(true)
             }
         }
 
@@ -48,12 +50,14 @@ export default function StundentForm() {
                 <Form.Group className="mb-3" style={{ width: "20rem" }} controlId="formBasicEmail">
                     <Form.Label>Register Number</Form.Label>
                     <Form.Control type="text" placeholder="Enter Register Number" ref={regRef} onChange={registerinputHandler} />
+                    {wrongRegNumber && <Form.Text>Wrong Register Number</Form.Text>}
 
                 </Form.Group>
 
                 <Form.Group className="mb-3" style={{ width: "20rem" }} controlId="formBasicPassword">
                     <Form.Label>DOB</Form.Label>
                     <Form.Control type="text" placeholder="dd/mm/yy" ref={dobRef} />
+                    {wrongDob && <Form.Text>Wrong DOB</Form.Text>}
                 </Form.Group>
 
                 <Button variant="primary" type="submit">
